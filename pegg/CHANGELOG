@@ -1,0 +1,72 @@
+Changelog for Pegg 0.23
+------------------------
+
+	Pegg 0.23 - Linux support for Casio label printers.
+
+	Copyright (c) 2003,2004 Daniel Amkreutz, <daniel.amkreutz@tu-harburg.de>
+                  (c) 2004 Alex Perry, <alex@pamurray.com>
+    
+        IMPORTANT NOTICE:
+
+	* This software was designed using data made available by and is released
+          with the permission of CASIO COMPUTER CO., LTD.
+        * CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
+          this software.
+        * Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
+          concerning this software.
+
+	A large amount of code is borrowed from the libusb Documentation.
+	The communication API of the Printer has been greatly documented
+	and published by CASIO COMPUTER CO., LTD
+
+							Many Thanks.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+	You may use this program for whatever you want as long the above written
+	text remains.
+
+	Please support Pegg by testing it and reporting bugs. !
+
+------
+New in 0.23:
+- -w switch defines now the maximum printing width. If the label is smaller, the width
+  will be adjusted. Contributed by Alex Perry
+
+New in 0.22:
+- Export to a pnm-file instead of printing a label. Contributed by Alex Perry
+- Documentation rewritten
+- Uninstallation target in makefile
+
+New in 0.21:
+- support for label sizes from 0px up to 2560px
+- new commandline handler
+
+New in 0.20a:
+- test support for different lable sizes on KL-P1000 & KL-E11
+
+Fixed in 0.16:
+- Problems printing multiple times under some Linux Distributions
+
+Fixed in 0.15:
+- Makefile included
+- some code enhancements inspired by M. Reising
+
+New in 0.14a:
+- printing support for KL-P1000
+- better error handling
+
+New in 0.13a:
+- complete communication for KLP1000 label Printer (untested jet)
+
+Fixed in 0.12a:
+
+- Corrected output for pegg -t on a KLP1000 label Printer
+- included a better test_raw

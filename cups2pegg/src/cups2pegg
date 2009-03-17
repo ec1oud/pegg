@@ -1,0 +1,137 @@
+#!/usr/bin/perl
+#
+# CUPS2Pegg Version 0.21a
+#
+# This script is a CUPS Backend for use with pegg in order to enable
+# cups-printing with a CASIO Label Printer.
+#
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# Copy this script to your CUPS Backend directory (eg. /usr/lib/cups/backend)
+# and restart the cups deamon. DO NOT FORGET TO COPY THE CASIO_KLKP.PPD
+# FILE INTO THE PPD DIRECTORY OF CUPS (eg. /usr/share/cups/model)
+#
+# This backend is based on the pdfdistiller script by Michael Goffioul it is
+# licensed by the Terms of the GPL. You should have recieved a copy of the GPL
+# along with this file
+#
+# (C) Daniel Amkreutz (aixpresso@web.de) 2004
+
+
+# ========================================================================================
+# IMPORTANT VARIABLES 
+# CHANGE THESE TO MATCH YOUR SYSTEM CONFIGURATION
+
+my $LOGFILE="/var/log/cups/cups2pegg.log";		# Where to save the log-file
+							# make sure cups can write there
+
+my $ACCOUNTING="/var/log/cups/page_log";		# The cups page log file
+my $CONVERT=`which convert`;				# complete path to convert exec.
+							
+my $PEGG=`which pegg`;					# "          " to pegg executable
+
+my $XBM2CRW=`which xbm2crw`;				# "          " xbm2crw executable
+
+# ========================================================================================
+# YOU DO NOT NEED TO MODIFY ANYTHING BELOW HERE
+# ========================================================================================
+
+
+my @option_list;
+my @option;
+my @page_raw;
+
+my $date_time="[".`date +%d/%b/%Y:%H:%M:%S`." ".`date +%z`."]";
+$date_time =~ s/\n//g;
+
+my $exec= "";
+my $out = "";
+
+my $density = 2;
+my $cut = 0;
+my $head = 0;
+my $speed = 0;
+my $margin = 1;
+my $width = 512;
+my $height = 64;
+my $pagesize ="";
+my $SCRATCHDIR=substr($ENV{"DEVICE_URI"},index($ENV{"DEVICE_URI"},":")+1);
+
+chomp($CONVERT);
+chomp($PEGG);
+chomp($XBM2CRW);
+
+@option_list = split(/ /, $ARGV[4]);
+
+
+open(ACC,">>".$ACCOUNTING) || die "Could not open Logfile\n\n";
+  print ACC $ENV{"PRINTER"}." ".$ARGV[0]." ".$ARGV[1]." ".$date_time." 1 1 - ".$ENV{"CUPS_SERVER"}."\n";
+close(ACC);
+
+
+
+open(LOG,">".$LOGFILE) || die "Could not open Logfile\n\n";
+  print LOG "==========================================================================\n";
+  print LOG "REPORT FOR PRINTJOB ".$ARGV[0]." of ".$ARGV[1]."\t\t";
+  print LOG `date`;
+  print LOG "\n";
+  print LOG "EXECUTABLES: ".$PEGG." , ".$XBM2CRW." & ".$CONVERT."\n";
+close(LOG);
+
+
+if (@ARGV == 0) {
+ print "direct cups2pegg \"Unknown\" \"Pegg Printer\"";
+ exit 1;
+} else {
+
+ $exec = "cat /dev/stdin > ".$SCRATCHDIR."/peggjob.ps";
+ $out = qx($exec);
+
+ 
+ foreach(@option_list) {
+   @option = split(/\=/, $_);
+   if($option[0] =~ /PageSize/){$pagesize = $option[1];}
+   if($option[0] =~ /cut/){	$cut = $option[1];}
+   if($option[0] =~ /dens/){	$density = $option[1];}
+   if($option[0] =~ /margin/){	$margin = $option[1];}
+   if($option[0] =~ /head/){	$head = $option[1];}
+   if($option[0] =~ /speed/){	$speed = $option[1];}
+ }
+
+ @page_raw=split(/_/,$pagesize);
+ $width=$page_raw[0];
+ $height=$page_raw[1];
+  
+ open(LOG,">".$LOGFILE) || die "Could not open Logfile\n\n"; 
+ 
+ print LOG "ARGUMENTS: W=".$width." H=".$height." C=".$cut." D=".
+             $density." M=".$margin." He=".$head." S=".$speed."\n";
+ print LOG $out."\n";  
+ $exec = $CONVERT." -page ".$width."x".$height." -rotate 90 ".$SCRATCHDIR."/peggjob.ps ".$SCRATCHDIR."/peggjob.xbm";
+ $out = qx($exec);
+ print LOG "RUNNING: ".$exec."\n\n";  
+ print LOG "OUTPUT: ".$out."\n\n";  
+
+
+ $exec = $XBM2CRW." ".$width." ".$height." ".$SCRATCHDIR."/peggjob.xbm";
+ $out = qx($exec);
+ print LOG "RUNNING: ".$exec."\n\n";  
+ print LOG "OUTPUT: ".$out."\n\n";  
+
+
+ $exec = $PEGG." -w".$width." -h".$height." -d".$density." -c".$cut.
+         " -s".$speed." -f".$margin." -H".$head." ".$SCRATCHDIR."/peggjob.xbm.crw"; 
+ 
+ $out = qx($exec);
+ print LOG "RUNNING: ".$exec."\n\n";  
+ print LOG "OUTPUT: ".$out."\n\n";  
+ 
+ print LOG "DONE.\n";
+ print LOG "==========================================================================\n";
+ close(LOG);
+
+
+}

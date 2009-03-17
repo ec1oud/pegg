@@ -1,0 +1,50 @@
+// Include standard font and media definitions
+
+#include <font.defs>
+DriverType ps
+
+// List the fonts that are supported, in this case all standard
+// fonts...
+
+Font *
+
+// Manufacturer, model name, and version
+
+Manufacturer "CASIO Computer CO., LTD."
+ModelName "KP-C10, KP-C50"
+Version 1.4
+ 
+
+Filter application/vnd.cups-postscript 0 -
+
+// Supported page sizes
+*HWMargins 0 0 0 0
+
+CustomMedia "512_64/KP_512x64px" 512 64 0 0 0 0
+        "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+        "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+
+ColorDevice false
+
+*InputSlot 0 Auto
+
+// Supported resolutions
+*Resolution k 1 0 0 0 "200dpi/200 DPI"
+
+Attribute DefaultColorSpace "" Gray
+Attribute LandscapeOrientation "" Minus90
+Attribute LanguageLevel "" "2"
+Attribute Product "" "(CASIO KP-C10/KP-C50)"
+Attribute PSVersion "" "(3010) 0"
+Attribute TTRasterizer "" Type42
+
+
+Option "dens/Print density" PickOne AnySetup 1
+	Choice "0/1-light" "0"
+	Choice "1" "1"
+	*Choice "2" "2"
+	Choice "3" "3"
+	Choice "4/5-dark" "4"
+
+// Specify the name of the PPD file we want to generate...
+PCFileName "casio_kp.ppd"

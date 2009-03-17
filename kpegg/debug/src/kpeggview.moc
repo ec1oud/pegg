@@ -1,0 +1,142 @@
+/****************************************************************************
+** kpeggView meta object code from reading C++ file 'kpeggview.h'
+**
+** Created: Fri Oct 1 16:29:46 2004
+**      by: The Qt MOC ($Id: qt/moc_yacc.cpp   3.3.2   edited Apr 19 11:34 $)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#undef QT_NO_COMPAT
+#include "../../src/kpeggview.h"
+#include <qmetaobject.h>
+#include <qapplication.h>
+
+#include <private/qucomextra_p.h>
+#if !defined(Q_MOC_OUTPUT_REVISION) || (Q_MOC_OUTPUT_REVISION != 26)
+#error "This file was generated using the moc from 3.3.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+const char *kpeggView::className() const
+{
+    return "kpeggView";
+}
+
+QMetaObject *kpeggView::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_kpeggView( "kpeggView", &kpeggView::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString kpeggView::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "kpeggView", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString kpeggView::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "kpeggView", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* kpeggView::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QWidget::staticMetaObject();
+    static const QUParameter param_slot_0[] = {
+	{ "url", &static_QUType_QString, 0, QUParameter::In }
+    };
+    static const QUMethod slot_0 = {"slotOnURL", 1, param_slot_0 };
+    static const QUParameter param_slot_1[] = {
+	{ "title", &static_QUType_QString, 0, QUParameter::In }
+    };
+    static const QUMethod slot_1 = {"slotSetTitle", 1, param_slot_1 };
+    static const QMetaData slot_tbl[] = {
+	{ "slotOnURL(const QString&)", &slot_0, QMetaData::Private },
+	{ "slotSetTitle(const QString&)", &slot_1, QMetaData::Private }
+    };
+    static const QUParameter param_signal_0[] = {
+	{ "text", &static_QUType_QString, 0, QUParameter::In }
+    };
+    static const QUMethod signal_0 = {"signalChangeStatusbar", 1, param_signal_0 };
+    static const QUParameter param_signal_1[] = {
+	{ "text", &static_QUType_QString, 0, QUParameter::In }
+    };
+    static const QUMethod signal_1 = {"signalChangeCaption", 1, param_signal_1 };
+    static const QMetaData signal_tbl[] = {
+	{ "signalChangeStatusbar(const QString&)", &signal_0, QMetaData::Public },
+	{ "signalChangeCaption(const QString&)", &signal_1, QMetaData::Public }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"kpeggView", parentObject,
+	slot_tbl, 2,
+	signal_tbl, 2,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_kpeggView.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* kpeggView::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "kpeggView" ) )
+	return this;
+    if ( !qstrcmp( clname, "kpeggIface" ) )
+	return (kpeggIface*)this;
+    return QWidget::qt_cast( clname );
+}
+
+// SIGNAL signalChangeStatusbar
+void kpeggView::signalChangeStatusbar( const QString& t0 )
+{
+    activate_signal( staticMetaObject()->signalOffset() + 0, t0 );
+}
+
+// SIGNAL signalChangeCaption
+void kpeggView::signalChangeCaption( const QString& t0 )
+{
+    activate_signal( staticMetaObject()->signalOffset() + 1, t0 );
+}
+
+bool kpeggView::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: slotOnURL((const QString&)static_QUType_QString.get(_o+1)); break;
+    case 1: slotSetTitle((const QString&)static_QUType_QString.get(_o+1)); break;
+    default:
+	return QWidget::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool kpeggView::qt_emit( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->signalOffset() ) {
+    case 0: signalChangeStatusbar((const QString&)static_QUType_QString.get(_o+1)); break;
+    case 1: signalChangeCaption((const QString&)static_QUType_QString.get(_o+1)); break;
+    default:
+	return QWidget::qt_emit(_id,_o);
+    }
+    return TRUE;
+}
+#ifndef QT_NO_PROPERTIES
+
+bool kpeggView::qt_property( int id, int f, QVariant* v)
+{
+    return QWidget::qt_property( id, f, v);
+}
+
+bool kpeggView::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES

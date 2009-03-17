@@ -1,0 +1,87 @@
+// Include standard font and media definitions
+
+#include <font.defs>
+DriverType ps
+
+// List the fonts that are supported, in this case all standard
+// fonts...
+
+Font *
+
+// Manufacturer, model name, and version
+
+Manufacturer "CASIO Computer CO., LTD."
+ModelName "KL-P1000, KL-E11"
+Version 1.4
+ 
+
+Filter application/vnd.cups-postscript 0 -
+
+// Supported page sizes
+*HWMargins 0 0 0 0
+
+CustomMedia "128_64/KL_128x64px" 128 64 0 0 0 0
+        "<</PageSize[128 64]/ImagingBBox [128 64]>>setpagedevice"
+        "<</PageSize[128 64]/ImagingBBox [128 64]>>setpagedevice"
+
+CustomMedia "256_64/KL_256x64px" 256 64 0 0 0 0
+        "<</PageSize[256 64]/ImagingBBox [256 64]>>setpagedevice"
+        "<</PageSize[256 64]/ImagingBBox [256 64]>>setpagedevice"
+
+CustomMedia "384_64/KL_384x64px" 384 64 0 0 0 0
+        "<</PageSize[384 64]/ImagingBBox [384 64]>>setpagedevice"
+        "<</PageSize[384 64]/ImagingBBox [384 64]>>setpagedevice"
+
+CustomMedia "512_64/KL_512x64px" 512 64 0 0 0 0
+        "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+        "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+
+CustomMedia "768_64/KL_768x64px" 768 64 0 0 0 0
+        "<</PageSize[768 64]/ImagingBBox [768 64]>>setpagedevice"
+        "<</PageSize[768 64]/ImagingBBox [768 64]>>setpagedevice"
+
+CustomMedia "896_64/KL_896x64px" 896 64 0 0 0 0
+        "<</PageSize[896 64]/ImagingBBox [896 64]>>setpagedevice"
+        "<</PageSize[896 64]/ImagingBBox [896 64]>>setpagedevice"
+
+CustomMedia "1024_64/KL_1024x64px" 1024 64 0 0 0 0
+        "<</PageSize[1024 64]/ImagingBBox [1024 64]>>setpagedevice"
+        "<</PageSize[1024 64]/ImagingBBox [1024 64]>>setpagedevice"
+
+CustomMedia "1408_64/KL_1408x64px" 1408 64 0 0 0 0
+        "<</PageSize[1408 64]/ImagingBBox [1408 64]>>setpagedevice"
+        "<</PageSize[1408 64]/ImagingBBox [1408 64]>>setpagedevice"
+
+CustomMedia "2048_64/KL_2048x64px" 2048 64 0 0 0 0
+        "<</PageSize[2048 64]/ImagingBBox [2048 64]>>setpagedevice"
+        "<</PageSize[2048 64]/ImagingBBox [2048 64]>>setpagedevice"
+
+
+VariablePaperSize Yes
+MinSize 64pt 128pt
+MaxSize 64pt 2048pt
+
+ColorDevice false
+
+*InputSlot 0 Auto
+
+// Supported resolutions
+*Resolution k 1 0 0 0 "200dpi/200 DPI"
+
+Attribute DefaultColorSpace "" Gray
+Attribute LandscapeOrientation "" Minus90
+Attribute LanguageLevel "" "2"
+Attribute Product "" "(CASIO KL-P1000/KL-E11)"
+Attribute PSVersion "" "(3010) 0"
+Attribute TTRasterizer "" Type42
+
+
+Option "dens/Print density" PickOne AnySetup 1
+	Choice "0/1-light" "0"
+	Choice "1" "1"
+	*Choice "2" "2"
+	Choice "3" "3"
+	Choice "4/5-dark" "4"
+
+// Specify the name of the PPD file we want to generate...
+PCFileName "casio_kl.ppd"

@@ -1,0 +1,148 @@
+// Include standard font and media definitions
+
+#include <font.defs>
+DriverType ps
+
+// List the fonts that are supported, in this case all standard
+// fonts...
+
+Font *
+
+// Manufacturer, model name, and version
+
+Manufacturer "CASIO Computer CO., LTD."
+ModelName "EL-700, EL-5000W"
+Version 1.4
+ 
+
+Filter application/vnd.cups-postscript 0 -
+
+// Supported page sizes
+*HWMargins 0 0 0 0
+
+CustomMedia "160_128/20mm_x_16mm" 160 128 0 0 0 0
+        "<</PageSize[160 128]/ImagingBBox [160 128]>>setpagedevice"
+        "<</PageSize[160 128]/ImagingBBox [160 128]>>setpagedevice"
+
+*CustomMedia "395_128/50mm_x_16mm" 395 128 0 0 0 0
+        "<</PageSize[395 128]/ImagingBBox [395 128]>>setpagedevice"
+        "<</PageSize[395 128]/ImagingBBox [395 128]>>setpagedevice"
+
+CustomMedia "553_128/70mm_x_16mm" 553 128 0 0 0 0
+        "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+        "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+
+CustomMedia "790_128/100mm_x_16mm" 790 128 0 0 0 0
+        "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+        "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+
+CustomMedia "1185_128/150mm_x_16mm" 1185 128 0 0 0 0
+        "<</PageSize[1185 128]/ImagingBBox [1185 128]>>setpagedevice"
+        "<</PageSize[1185 128]/ImagingBBox [1185 128]>>setpagedevice"
+
+CustomMedia "160_64/20mm_x_8mm" 160 64 0 0 0 0
+        "<</PageSize[160 64]/ImagingBBox [160 64]>>setpagedevice"
+        "<</PageSize[160 64]/ImagingBBox [160 64]>>setpagedevice"
+
+CustomMedia "395_64/50mm_x_8mm" 395 64 0 0 0 0
+        "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+        "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+
+CustomMedia "553_64/70mm_x_8mm" 553 64 0 0 0 0
+        "<</PageSize[553 64]/ImagingBBox [553 64]>>setpagedevice"
+        "<</PageSize[553 64]/ImagingBBox [553 64]>>setpagedevice"
+
+CustomMedia "790_64/100mm_x_8mm" 790 64 0 0 0 0
+        "<</PageSize[790 64]/ImagingBBox [790 64]>>setpagedevice"
+        "<</PageSize[790 64]/ImagingBBox [790 64]>>setpagedevice"
+
+CustomMedia "1185_64/150mm_x_8mm" 1185 64 0 0 0 0
+        "<</PageSize[1185 64]/ImagingBBox [1185 64]>>setpagedevice"
+        "<</PageSize[1185 64]/ImagingBBox [1185 64]>>setpagedevice"
+
+CustomMedia "350_64/Decorative_XR-18ND" 350 64 0 0 0 0
+        "<</PageSize[350 64]/ImagingBBox [350 64]>>setpagedevice"
+        "<</PageSize[350 64]/ImagingBBox [350 64]>>setpagedevice"
+
+CustomMedia "790_128/Kraft_XE-L7_100mm" 790 128 0 0 0 0
+        "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+        "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+
+CustomMedia "395_64/Kraft_XE-S5_50mm" 395 64 0 0 0 0
+        "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+        "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+
+CustomMedia "395_64/Kraft_XE-S6_50mm" 395 64 0 0 0 0
+        "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+        "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+
+CustomMedia "553_128/Kraft_XE-U4B_MD" 553 128 0 0 0 0
+        "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+        "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+
+CustomMedia "500_64/Kraft_XE-U3A_miniDV" 500 64 0 0 0 0
+        "<</PageSize[500 64]/ImagingBBox [500 64]>>setpagedevice"
+        "<</PageSize[500 64]/ImagingBBox [500 64]>>setpagedevice"
+	
+CustomMedia "750_64/Kraft_XE-U5A_MC" 750 64 0 0 0 0
+        "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+        "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+
+CustomMedia "750_64/Kraft_XE-U2A_8mm" 750 64 0 0 0 0
+        "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+        "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+
+CustomMedia "1100_128/Kraft_XE-U1C_VHS" 1100 128 0 0 0 0
+        "<</PageSize[1100 128]/ImagingBBox [1100 128]>>setpagedevice"
+        "<</PageSize[1100 128]/ImagingBBox [1100 128]>>setpagedevice"
+
+
+
+VariablePaperSize Yes
+MinSize 64pt 256pt
+MaxSize 384pt 2048pt
+
+ColorDevice false
+
+*InputSlot 0 Auto
+
+// Supported resolutions
+*Resolution k 1 0 0 0 "200dpi/200 DPI"
+
+Attribute DefaultColorSpace "" Gray
+Attribute LandscapeOrientation "" Minus90
+Attribute LanguageLevel "" "2"
+Attribute Product "" "(CASIO EL-700/5000W)"
+Attribute PSVersion "" "(3010) 0"
+Attribute TTRasterizer "" Type42
+
+
+Option "dens/Print density" PickOne AnySetup 1
+	Choice "0/1-light" "0"
+	Choice "1" "1"
+	*Choice "2" "2"
+	Choice "3" "3"
+	Choice "4/5-dark" "4"
+
+Option "cut/Cut mode" PickOne AnySetup 1
+	*Choice "0/Normal cut" "0"
+	Choice "1/Half cut" "1"
+	Choice "2/No cut" "2"
+
+Option "speed/Print speed" PickOne AnySetup 1
+	*Choice "0/Normal" "0"
+	Choice "1/High" "1"
+
+Option "margin/Margin and feed" PickOne AnySetup 1
+	Choice "0/No feed" "0"
+	*Choice "1/Large Margin" "1"
+	Choice "2/Small Margin" "2"
+        Choice "3/Medium Margin" "3"
+
+Option "head/Head select (only for EL-5000W)" PickOne AnySetup 1
+	*Choice "0/256dot Head" "0"
+	Choice "1/64dot Head" "1"
+
+
+// Specify the name of the PPD file we want to generate...
+PCFileName "casio_el.ppd"

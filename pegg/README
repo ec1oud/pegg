@@ -1,0 +1,123 @@
+Readme for Pegg 0.23
+---------------------
+
+	Pegg 0.23 - Linux support for Casio label printers.
+
+	Copyright (c) 2003,2004 Daniel Amkreutz, <daniel.amkreutz@tu-harburg.de>
+                  (c) 2004 Alex Perry, <alex@pamurray.com>
+
+        IMPORTANT NOTICE:
+
+	* This software was designed using data made available by and is released
+          with the permission of CASIO COMPUTER CO., LTD.
+        * CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
+          this software.
+        * Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
+          concerning this software.
+
+	A large amount of code is borrowed from the libusb Documentation.
+	The communication API of the Printer has been greatly documented
+	and published by CASIO COMPUTER CO., LTD
+
+							Many Thanks.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+	This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+	You may use this program for whatever you want as long the above written
+	text remains.
+
+	Please support Pegg by testing it and reporting bugs. !
+
+
+------
+
+
+Pegg is a linux userspace driver for Casio USB label printers. 
+The folowing devices are supported:
+
+KP-C10, (KP-C50), KL-P1000, KL-E11
+
+it has been tested using a KP-C10 and KL-P1000 printer.
+For using pegg with the KP-C50 you have to modify the sourcecode
+of pegg as described in pegg.c
+The usage of KP-C50 printers can cause problems, if they are also 
+used as mouse, since the device might be busy and cannot be opened
+by pegg. Due to this please make sure, that you do not use the printer
+as a mouse when trying first.
+
+Pegg scans the USB for your printer using libusb (libusb.sourceforge.net).
+
+TESTING:
+Connect your printer to the usb-port.
+To get some information about your printer use the -t (test) option.
+
+
+	$bash>./pegg -t
+
+You'll see something like this:
+
+	Pegg Version 0.23 (C)2003,04 Daniel Amkreutz, (C)2004 Alex Perry
+	Scanning USB ...
+	Found Casio Label Printer.
+	Status Packet request answer:
+
+	5: 1  Product-Type 1 = 0x01
+	6: 28  Product-Type 2 = 0x28 => 0x0128 (KP-C10)
+	7: 0  Version Information
+	8: 0  Support Information
+
+	Transfer complete.
+	Printer closed.
+
+	No Raw-File specified.
+
+This output is mainly used to test the communication with your printer and
+get the type of printer you have connected. To identify a printer, pegg 
+makes use of the Identification the printer sends to it using a CASIO command
+and does not rely on the USB ProductID.
+
+
+PRINTING:
+
+The maximum imagesize for KP-C10/50 is 4KB. My printer stops using
+imagedata bigger than (approx.) 3KB.
+On the KL-P1000/KL-E11 the Imagememory is limited to approx. 20KB, which will
+lead to a maximum width of 2560px.
+To print a raw file use pegg the folowing way:
+
+	./pegg -d3 test_raw
+
+Pegg will set the printing density to 3 and print the file test_raw.
+Make sure that you use the correct syntax for the density option (like -d0 for
+light printing or -d4 for a dark print).
+
+You can select the width using the -w switch eg. -w1024 for a 1024px width label
+If you don't specify the with, pegg assumes a width of 512px
+
+PNM-EXPORT:
+A new feature since Version 0.22 is to export the imagedata into a pnm-file, which can
+be denoted by using the -o switch like this:
+
+	./pegg -d2 -w768 -ooutput.pnm test_raw
+	
+This command will save the print to output.pnm instead of printing a label. 
+The feature was added to have a preview possibility when developing new 
+applications.
+
+
+
+RAW IMAGE DATA:
+
+The example here deals with 4096 Bytes of Imagedata which will result in a 512px label
+The printer has a fixed printing width of 64 dots. Each dot is represented
+by one bit. After transfering 64 Bits (or 8 Bytes), the printer starts
+(automatically) a new line. This leads to a number of ( (4KB * 8) / 64)
+512 lines. Clear uneccessary data to zero (0x00). As you can guess, the imagedata is 
+packed binary in the raw_file.

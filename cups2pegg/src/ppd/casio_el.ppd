@@ -1,0 +1,206 @@
+*PPD-Adobe: "4.3"
+*% PPD file for EL-700, EL-5000W with CUPS.
+*% Created by the CUPS PPD Compiler v1.0.
+*FormatVersion: "4.3"
+*FileVersion: "1.4"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "casio_el.ppd"
+*Product: "(CASIO EL-700/5000W)"
+*Manufacturer: "CASIO Computer CO., LTD."
+*ModelName: "CASIO Computer CO., LTD. EL-700, EL-5000W"
+*ShortNickName: "CASIO Computer CO., LTD. EL-700, EL-5000W"
+*NickName: "CASIO Computer CO., LTD. EL-700, EL-5000W, 1.4"
+*PSVersion: "(3010) 0"
+*LanguageLevel: "2"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Minus90
+*TTRasterizer: Type42
+*% Driver-defined attributes...
+*Product: "(CASIO EL-700/5000W)"
+*% CUPS attributes...
+*cupsVersion: 1.1
+*cupsModelNumber: "0"
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-postscript 0 -"
+*OpenUI *PageSize: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: 395_128
+*PageSize 160_128/20mm_x_16mm: "<</PageSize[160 128]/ImagingBBox [160 128]>>setpagedevice"
+*PageSize 395_128/50mm_x_16mm: "<</PageSize[395 128]/ImagingBBox [395 128]>>setpagedevice"
+*PageSize 553_128/70mm_x_16mm: "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+*PageSize 790_128/100mm_x_16mm: "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+*PageSize 1185_128/150mm_x_16mm: "<</PageSize[1185 128]/ImagingBBox [1185 128]>>setpagedevice"
+*PageSize 160_64/20mm_x_8mm: "<</PageSize[160 64]/ImagingBBox [160 64]>>setpagedevice"
+*PageSize 395_64/50mm_x_8mm: "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+*PageSize 553_64/70mm_x_8mm: "<</PageSize[553 64]/ImagingBBox [553 64]>>setpagedevice"
+*PageSize 790_64/100mm_x_8mm: "<</PageSize[790 64]/ImagingBBox [790 64]>>setpagedevice"
+*PageSize 1185_64/150mm_x_8mm: "<</PageSize[1185 64]/ImagingBBox [1185 64]>>setpagedevice"
+*PageSize 350_64/Decorative_XR-18ND: "<</PageSize[350 64]/ImagingBBox [350 64]>>setpagedevice"
+*PageSize 790_128/Kraft_XE-L7_100mm: "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+*PageSize 395_64/Kraft_XE-S5_50mm: "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+*PageSize 395_64/Kraft_XE-S6_50mm: "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+*PageSize 553_128/Kraft_XE-U4B_MD: "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+*PageSize 500_64/Kraft_XE-U3A_miniDV: "<</PageSize[500 64]/ImagingBBox [500 64]>>setpagedevice"
+*PageSize 750_64/Kraft_XE-U5A_MC: "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+*PageSize 750_64/Kraft_XE-U2A_8mm: "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+*PageSize 1100_128/Kraft_XE-U1C_VHS: "<</PageSize[1100 128]/ImagingBBox [1100 128]>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: 395_128
+*PageRegion 160_128/20mm_x_16mm: "<</PageSize[160 128]/ImagingBBox [160 128]>>setpagedevice"
+*PageRegion 395_128/50mm_x_16mm: "<</PageSize[395 128]/ImagingBBox [395 128]>>setpagedevice"
+*PageRegion 553_128/70mm_x_16mm: "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+*PageRegion 790_128/100mm_x_16mm: "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+*PageRegion 1185_128/150mm_x_16mm: "<</PageSize[1185 128]/ImagingBBox [1185 128]>>setpagedevice"
+*PageRegion 160_64/20mm_x_8mm: "<</PageSize[160 64]/ImagingBBox [160 64]>>setpagedevice"
+*PageRegion 395_64/50mm_x_8mm: "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+*PageRegion 553_64/70mm_x_8mm: "<</PageSize[553 64]/ImagingBBox [553 64]>>setpagedevice"
+*PageRegion 790_64/100mm_x_8mm: "<</PageSize[790 64]/ImagingBBox [790 64]>>setpagedevice"
+*PageRegion 1185_64/150mm_x_8mm: "<</PageSize[1185 64]/ImagingBBox [1185 64]>>setpagedevice"
+*PageRegion 350_64/Decorative_XR-18ND: "<</PageSize[350 64]/ImagingBBox [350 64]>>setpagedevice"
+*PageRegion 790_128/Kraft_XE-L7_100mm: "<</PageSize[790 128]/ImagingBBox [790 128]>>setpagedevice"
+*PageRegion 395_64/Kraft_XE-S5_50mm: "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+*PageRegion 395_64/Kraft_XE-S6_50mm: "<</PageSize[395 64]/ImagingBBox [395 64]>>setpagedevice"
+*PageRegion 553_128/Kraft_XE-U4B_MD: "<</PageSize[553 128]/ImagingBBox [553 128]>>setpagedevice"
+*PageRegion 500_64/Kraft_XE-U3A_miniDV: "<</PageSize[500 64]/ImagingBBox [500 64]>>setpagedevice"
+*PageRegion 750_64/Kraft_XE-U5A_MC: "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+*PageRegion 750_64/Kraft_XE-U2A_8mm: "<</PageSize[750 64]/ImagingBBox [750 64]>>setpagedevice"
+*PageRegion 1100_128/Kraft_XE-U1C_VHS: "<</PageSize[1100 128]/ImagingBBox [1100 128]>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: 395_128
+*ImageableArea 160_128/20mm_x_16mm: "0.00 0.00 160.00 128.00"
+*ImageableArea 395_128/50mm_x_16mm: "0.00 0.00 395.00 128.00"
+*ImageableArea 553_128/70mm_x_16mm: "0.00 0.00 553.00 128.00"
+*ImageableArea 790_128/100mm_x_16mm: "0.00 0.00 790.00 128.00"
+*ImageableArea 1185_128/150mm_x_16mm: "0.00 0.00 1185.00 128.00"
+*ImageableArea 160_64/20mm_x_8mm: "0.00 0.00 160.00 64.00"
+*ImageableArea 395_64/50mm_x_8mm: "0.00 0.00 395.00 64.00"
+*ImageableArea 553_64/70mm_x_8mm: "0.00 0.00 553.00 64.00"
+*ImageableArea 790_64/100mm_x_8mm: "0.00 0.00 790.00 64.00"
+*ImageableArea 1185_64/150mm_x_8mm: "0.00 0.00 1185.00 64.00"
+*ImageableArea 350_64/Decorative_XR-18ND: "0.00 0.00 350.00 64.00"
+*ImageableArea 790_128/Kraft_XE-L7_100mm: "0.00 0.00 790.00 128.00"
+*ImageableArea 395_64/Kraft_XE-S5_50mm: "0.00 0.00 395.00 64.00"
+*ImageableArea 395_64/Kraft_XE-S6_50mm: "0.00 0.00 395.00 64.00"
+*ImageableArea 553_128/Kraft_XE-U4B_MD: "0.00 0.00 553.00 128.00"
+*ImageableArea 500_64/Kraft_XE-U3A_miniDV: "0.00 0.00 500.00 64.00"
+*ImageableArea 750_64/Kraft_XE-U5A_MC: "0.00 0.00 750.00 64.00"
+*ImageableArea 750_64/Kraft_XE-U2A_8mm: "0.00 0.00 750.00 64.00"
+*ImageableArea 1100_128/Kraft_XE-U1C_VHS: "0.00 0.00 1100.00 128.00"
+*DefaultPaperDimension: 395_128
+*PaperDimension 160_128/20mm_x_16mm: "160.00 128.00"
+*PaperDimension 395_128/50mm_x_16mm: "395.00 128.00"
+*PaperDimension 553_128/70mm_x_16mm: "553.00 128.00"
+*PaperDimension 790_128/100mm_x_16mm: "790.00 128.00"
+*PaperDimension 1185_128/150mm_x_16mm: "1185.00 128.00"
+*PaperDimension 160_64/20mm_x_8mm: "160.00 64.00"
+*PaperDimension 395_64/50mm_x_8mm: "395.00 64.00"
+*PaperDimension 553_64/70mm_x_8mm: "553.00 64.00"
+*PaperDimension 790_64/100mm_x_8mm: "790.00 64.00"
+*PaperDimension 1185_64/150mm_x_8mm: "1185.00 64.00"
+*PaperDimension 350_64/Decorative_XR-18ND: "350.00 64.00"
+*PaperDimension 790_128/Kraft_XE-L7_100mm: "790.00 128.00"
+*PaperDimension 395_64/Kraft_XE-S5_50mm: "395.00 64.00"
+*PaperDimension 395_64/Kraft_XE-S6_50mm: "395.00 64.00"
+*PaperDimension 553_128/Kraft_XE-U4B_MD: "553.00 128.00"
+*PaperDimension 500_64/Kraft_XE-U3A_miniDV: "500.00 64.00"
+*PaperDimension 750_64/Kraft_XE-U5A_MC: "750.00 64.00"
+*PaperDimension 750_64/Kraft_XE-U2A_8mm: "750.00 64.00"
+*PaperDimension 1100_128/Kraft_XE-U1C_VHS: "1100.00 128.00"
+*MaxMediaWidth: "384.00"
+*MaxMediaHeight: "2048.00"
+*HWMargins: 0.00 0.00 0.00 0.00
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width: 1 points 64.00 384.00
+*ParamCustomPageSize Height: 2 points 256.00 2048.00
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 0 0
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 10.0 AnySetup *InputSlot
+*DefaultInputSlot: Auto
+*InputSlot Auto: "<</MediaPosition 0>>setpagedevice"
+*CloseUI: *InputSlot
+*OpenUI *Resolution: PickOne
+*OrderDependency: 10.0 AnySetup *Resolution
+*DefaultResolution: 200dpi
+*Resolution 200dpi/200 DPI: "<</HWResolution[200 200]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *dens/Print density: PickOne
+*OrderDependency: 1.0 AnySetup *dens
+*Defaultdens: 2
+*dens 0/1-light: "0"
+*dens 1: "1"
+*dens 2: "2"
+*dens 3: "3"
+*dens 4/5-dark: "4"
+*CloseUI: *dens
+*OpenUI *cut/Cut mode: PickOne
+*OrderDependency: 1.0 AnySetup *cut
+*Defaultcut: 0
+*cut 0/Normal cut: "0"
+*cut 1/Half cut: "1"
+*cut 2/No cut: "2"
+*CloseUI: *cut
+*OpenUI *speed/Print speed: PickOne
+*OrderDependency: 1.0 AnySetup *speed
+*Defaultspeed: 0
+*speed 0/Normal: "0"
+*speed 1/High: "1"
+*CloseUI: *speed
+*OpenUI *margin/Margin and feed: PickOne
+*OrderDependency: 1.0 AnySetup *margin
+*Defaultmargin: 1
+*margin 0/No feed: "0"
+*margin 1/Large Margin: "1"
+*margin 2/Small Margin: "2"
+*margin 3/Medium Margin: "3"
+*CloseUI: *margin
+*OpenUI *head/Head select (only for EL-5000W): PickOne
+*OrderDependency: 1.0 AnySetup *head
+*Defaulthead: 0
+*head 0/256dot Head: "0"
+*head 1/64dot Head: "1"
+*CloseUI: *head
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(1.05)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(1.05)" Standard ROM
+*Font AvantGarde-Demi: Standard "(1.05)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(1.05)" Standard ROM
+*Font Bookman-Demi: Standard "(1.05)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(1.05)" Standard ROM
+*Font Bookman-Light: Standard "(1.05)" Standard ROM
+*Font Bookman-LightItalic: Standard "(1.05)" Standard ROM
+*Font Courier: Standard "(1.05)" Standard ROM
+*Font Courier-Bold: Standard "(1.05)" Standard ROM
+*Font Courier-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Courier-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica: Standard "(1.05)" Standard ROM
+*Font Helvetica-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Oblique: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(1.05)" Standard ROM
+*Font Palatino-Bold: Standard "(1.05)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Palatino-Italic: Standard "(1.05)" Standard ROM
+*Font Palatino-Roman: Standard "(1.05)" Standard ROM
+*Font Symbol: Special "(001.005)" Special ROM
+*Font Times-Bold: Standard "(1.05)" Standard ROM
+*Font Times-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Times-Italic: Standard "(1.05)" Standard ROM
+*Font Times-Roman: Standard "(1.05)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
+*Font ZapfDingbats: Special "(001.005)" Special ROM
+*% End of casio_el.ppd, 10709 bytes.

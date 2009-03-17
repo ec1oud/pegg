@@ -1,0 +1,98 @@
+*PPD-Adobe: "4.3"
+*% PPD file for KP-C10, KP-C50 with CUPS.
+*% Created by the CUPS PPD Compiler v1.0.
+*FormatVersion: "4.3"
+*FileVersion: "1.4"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "casio_kp.ppd"
+*Product: "(CASIO KP-C10/KP-C50)"
+*Manufacturer: "CASIO Computer CO., LTD."
+*ModelName: "CASIO Computer CO., LTD. KP-C10, KP-C50"
+*ShortNickName: "CASIO Computer CO., LTD. KP-C10, KP-C50"
+*NickName: "CASIO Computer CO., LTD. KP-C10, KP-C50, 1.4"
+*PSVersion: "(3010) 0"
+*LanguageLevel: "2"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Minus90
+*TTRasterizer: Type42
+*% Driver-defined attributes...
+*Product: "(CASIO KP-C10/KP-C50)"
+*% CUPS attributes...
+*cupsVersion: 1.1
+*cupsModelNumber: "0"
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-postscript 0 -"
+*OpenUI *PageSize: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize 512_64/KP_512x64px: "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion 512_64/KP_512x64px: "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: Letter
+*ImageableArea 512_64/KP_512x64px: "0.00 0.00 512.00 64.00"
+*DefaultPaperDimension: Letter
+*PaperDimension 512_64/KP_512x64px: "512.00 64.00"
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 10.0 AnySetup *InputSlot
+*DefaultInputSlot: Auto
+*InputSlot Auto: "<</MediaPosition 0>>setpagedevice"
+*CloseUI: *InputSlot
+*OpenUI *Resolution: PickOne
+*OrderDependency: 10.0 AnySetup *Resolution
+*DefaultResolution: 200dpi
+*Resolution 200dpi/200 DPI: "<</HWResolution[200 200]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *dens/Print density: PickOne
+*OrderDependency: 1.0 AnySetup *dens
+*Defaultdens: 2
+*dens 0/1-light: "0"
+*dens 1: "1"
+*dens 2: "2"
+*dens 3: "3"
+*dens 4/5-dark: "4"
+*CloseUI: *dens
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(1.05)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(1.05)" Standard ROM
+*Font AvantGarde-Demi: Standard "(1.05)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(1.05)" Standard ROM
+*Font Bookman-Demi: Standard "(1.05)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(1.05)" Standard ROM
+*Font Bookman-Light: Standard "(1.05)" Standard ROM
+*Font Bookman-LightItalic: Standard "(1.05)" Standard ROM
+*Font Courier: Standard "(1.05)" Standard ROM
+*Font Courier-Bold: Standard "(1.05)" Standard ROM
+*Font Courier-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Courier-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica: Standard "(1.05)" Standard ROM
+*Font Helvetica-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Oblique: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(1.05)" Standard ROM
+*Font Palatino-Bold: Standard "(1.05)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Palatino-Italic: Standard "(1.05)" Standard ROM
+*Font Palatino-Roman: Standard "(1.05)" Standard ROM
+*Font Symbol: Special "(001.005)" Special ROM
+*Font Times-Bold: Standard "(1.05)" Standard ROM
+*Font Times-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Times-Italic: Standard "(1.05)" Standard ROM
+*Font Times-Roman: Standard "(1.05)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
+*Font ZapfDingbats: Special "(001.005)" Special ROM
+*% End of casio_kp.ppd, 04073 bytes.

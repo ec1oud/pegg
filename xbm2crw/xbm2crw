@@ -1,0 +1,77 @@
+#!/usr/bin/perl -w
+
+#######################################################################################
+# xbm2crw 0.4 - A converter for xbm to casio raw files to print with pegg
+# (C)2004 Daniel Amkreutz
+# compatibility & code enhancements by Alexander Reichl, March 2004
+#
+#                                                       Many Thanks
+#
+#        Only 1Bit Black&White XBMs are valid !!!
+#
+#        This program is distributed in the hope that it will be useful,
+#        but WITHOUT ANY WARRANTY; without even the implied warranty of
+#        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+#	You may use this program for whatever you want as long the above written
+#	text remains.
+#
+#
+#  Print the .crw file using pegg
+#
+#########################################################################################
+
+my (@bitmap, $sXBM, $pos, $file);
+
+print "\nxbm2crw Version 0.4 (C) 2004 Daniel Amkreutz\n";
+print "modified by Alexander Reichl, March 2004\n";
+
+if (@ARGV == 0) {
+  print "convert an black&white xbm file to a casio raw file\n\n";
+  print "\tXBM format:\t1-Bit black&white\n";
+  print "\nERROR! Wrong number of Parameters.\n\n\tUsage: xbm2crw.pl width height XBMFILE\n\n";
+  exit;
+}
+
+if (@ARGV == 1) {
+  $set_row = 511;
+  $set_col = 64/8-1;
+  $file = $ARGV[0];
+} else {
+  $set_row = $ARGV[0]-1;
+  $set_col = $ARGV[1]/8-1;
+  $file = $ARGV[2];
+}
+
+print "converting to ".($set_row+1)." x ".(($set_col+1)*8)."...\n";
+
+open(IN, "<",$file) || die "Could not open file!\n\n";
+sysread IN, $sXBM, -s IN;
+close(IN);
+
+$sXBM =~ s/\n//g;
+$sXBM =~ s/\s//g;
+$sXBM =~ s/^.*{//;
+$sXBM =~ s/}.*$//;
+
+$pos = 0;
+foreach (split(/,/,$sXBM))
+{
+  if (length($_) != 4)
+  {
+    print "WARNING: read '$_' at image byte $pos, but expected hex value as for example '0xA2'.\n";
+  }
+  $bitmap[$pos++] = $_;
+}
+
+
+open(WRITE, ">".$file.".crw") || die "Could not open file! \n\n";
+binmode WRITE;
+
+for (my $row=0; $row<=$set_row; $row++)
+{
+  for(my $col=0; $col<=$set_col; $col++)
+  {
+    print WRITE pack("C", hex($bitmap[($pos -1) - $row*($set_col+1) - $set_col + $col]));
+} }
+close(WRITE);

@@ -1,0 +1,16 @@
+Begin3
+Title:          kpegg -- Some description
+Version:        0.2
+Entered-date:   
+Description:    
+Keywords:       KDE Qt
+Author:         Daniel Amkreutz <aixpresso@web.de>
+Maintained-by:  Daniel Amkreutz <aixpresso@web.de>
+Home-page:      
+Alternate-site: 
+Primary-site:   ftp://ftp.kde.org/pub/kde/unstable/apps/utils
+                xxxxxx  kpegg-0.2.tar.gz
+                xxx     kpegg-0.2.lsm
+Platform:       Linux. Needs KDE
+Copying-policy: GPL
+End

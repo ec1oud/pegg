@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<TITLE>cups2pegg - The CUPS Plugin for pegg HOWTO</TITLE>
+<link rel="SHORTCUT ICON" href="../images/favicon.ico">
+</HEAD>
+<body style="background-image:url(../images/bg2.png)">
+
+<H1>cups2pegg - The CUPS Plugin for pegg HOWTO</H1>
+Copyright (C) 2004 Daniel Amkreutz aixpresso@web.de (<a href="../pgp.html" target="_new">public key</a>)
+<H2>What is this all about</H2>
+In this howto i will describe how you can add your custom label dimensions<BR>
+to the cups2pegg plugin.
+<H2>What will I need ?</H2>
+The folowing things are needed:
+<ul>
+<li>The CUPS Driver Development Kit (DDK) available on the <a href="http://www.cups.org">CUPS Homepage</a>.</li>
+<li>Your favourite text editor</li>
+<li>some time</li>
+</ul>
+From the CUPS DDK you will only need the ppd-compiler (ppdc). This tool will use the drv files<br>
+included in the cups2pegg tarball to generate a corresponding ppd (Postscript Printer Description).<br>
+These files include the neccessary information to handle postscript printers within cups.<BR>
+Of course our labelprinters are not postscript printers but the cups2pegg backend accepts a <br>
+postscript document as an input which is converted into a raw-file that can be <br>
+sent to the printer using pegg or pegg_el.<br>
+<H2>What to do ?</H2>
+Assuming that you have already the dimensions of your desired label in pixels (if not then you<br>
+must calculate those. These printers have 200dpi resolution), you can start editing the drv file.<br>
+<ul>
+<LI>For this open the drv file (included in cups2pegg-v0.21a.tar.gz) which matches your printer.
+</li>
+<li>Locate the folowing section (The name "500_64/Kraft_XE-u3A_miniDV" is only an example):<br>
+    <pre>
+    CustomMedia "500_64/Kraft_XE-U3A_miniDV" 500 64 0 0 0 0
+        "&lt;&lt;/PageSize[500 64]/ImagingBBox [500 64]&gt;&gt;setpagedevice"
+        "&lt;&lt;/PageSize[500 64]/ImagingBBox [500 64]&gt;&gt;setpagedevice"
+    </pre>
+</li>
+<li>Now add your label size. For this copy the section and rename it using your label name<br>
+    and change the geometry. For example here we have a section for a label namend "My_own"<br>
+    this label has a width of 455px and is 128px high.<br>
+    <pre>
+    CustomMedia "455_64/My_own" 455 128 0 0 0 0
+        "&lt;&lt;/PageSize[455 128]/ImagingBBox [455 128]&gt;&gt;setpagedevice"
+        "&lt;&lt;/PageSize[455 128]/ImagingBBox [455 128]&gt;&gt;setpagedevice"
+    </pre>
+    As you can see it is very important to add the geometry to the name. This information is<br>
+    used by the backend to convert the imagedata.
+</li> 
+<li>save the modified ppd file and compile it using ppdc (make a backup of the original ppd files first !<br>
+After the compilation is done you can find the new ppd-file in the ppd -subdirectory.
+</li>
+<li>Next copy your new ppd file to the cups ppd directory (eg. /usr/share/cups/model)</li>
+</ul>
+You can now use your own label geometry.
+</BODY>
+</HTML>

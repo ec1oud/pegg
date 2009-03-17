@@ -1,0 +1,139 @@
+*PPD-Adobe: "4.3"
+*% PPD file for KL-P1000, KL-E11 with CUPS.
+*% Created by the CUPS PPD Compiler v1.0.
+*FormatVersion: "4.3"
+*FileVersion: "1.4"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "casio_kl.ppd"
+*Product: "(CASIO KL-P1000/KL-E11)"
+*Manufacturer: "CASIO Computer CO., LTD."
+*ModelName: "CASIO Computer CO., LTD. KL-P1000, KL-E11"
+*ShortNickName: "CASIO Computer CO., LTD. KL-P1000, KL-E11"
+*NickName: "CASIO Computer CO., LTD. KL-P1000, KL-E11, 1.4"
+*PSVersion: "(3010) 0"
+*LanguageLevel: "2"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Minus90
+*TTRasterizer: Type42
+*% Driver-defined attributes...
+*Product: "(CASIO KL-P1000/KL-E11)"
+*% CUPS attributes...
+*cupsVersion: 1.1
+*cupsModelNumber: "0"
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-postscript 0 -"
+*OpenUI *PageSize: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize 128_64/KL_128x64px: "<</PageSize[128 64]/ImagingBBox [128 64]>>setpagedevice"
+*PageSize 256_64/KL_256x64px: "<</PageSize[256 64]/ImagingBBox [256 64]>>setpagedevice"
+*PageSize 384_64/KL_384x64px: "<</PageSize[384 64]/ImagingBBox [384 64]>>setpagedevice"
+*PageSize 512_64/KL_512x64px: "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+*PageSize 768_64/KL_768x64px: "<</PageSize[768 64]/ImagingBBox [768 64]>>setpagedevice"
+*PageSize 896_64/KL_896x64px: "<</PageSize[896 64]/ImagingBBox [896 64]>>setpagedevice"
+*PageSize 1024_64/KL_1024x64px: "<</PageSize[1024 64]/ImagingBBox [1024 64]>>setpagedevice"
+*PageSize 1408_64/KL_1408x64px: "<</PageSize[1408 64]/ImagingBBox [1408 64]>>setpagedevice"
+*PageSize 2048_64/KL_2048x64px: "<</PageSize[2048 64]/ImagingBBox [2048 64]>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion 128_64/KL_128x64px: "<</PageSize[128 64]/ImagingBBox [128 64]>>setpagedevice"
+*PageRegion 256_64/KL_256x64px: "<</PageSize[256 64]/ImagingBBox [256 64]>>setpagedevice"
+*PageRegion 384_64/KL_384x64px: "<</PageSize[384 64]/ImagingBBox [384 64]>>setpagedevice"
+*PageRegion 512_64/KL_512x64px: "<</PageSize[512 64]/ImagingBBox [512 64]>>setpagedevice"
+*PageRegion 768_64/KL_768x64px: "<</PageSize[768 64]/ImagingBBox [768 64]>>setpagedevice"
+*PageRegion 896_64/KL_896x64px: "<</PageSize[896 64]/ImagingBBox [896 64]>>setpagedevice"
+*PageRegion 1024_64/KL_1024x64px: "<</PageSize[1024 64]/ImagingBBox [1024 64]>>setpagedevice"
+*PageRegion 1408_64/KL_1408x64px: "<</PageSize[1408 64]/ImagingBBox [1408 64]>>setpagedevice"
+*PageRegion 2048_64/KL_2048x64px: "<</PageSize[2048 64]/ImagingBBox [2048 64]>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: Letter
+*ImageableArea 128_64/KL_128x64px: "0.00 0.00 128.00 64.00"
+*ImageableArea 256_64/KL_256x64px: "0.00 0.00 256.00 64.00"
+*ImageableArea 384_64/KL_384x64px: "0.00 0.00 384.00 64.00"
+*ImageableArea 512_64/KL_512x64px: "0.00 0.00 512.00 64.00"
+*ImageableArea 768_64/KL_768x64px: "0.00 0.00 768.00 64.00"
+*ImageableArea 896_64/KL_896x64px: "0.00 0.00 896.00 64.00"
+*ImageableArea 1024_64/KL_1024x64px: "0.00 0.00 1024.00 64.00"
+*ImageableArea 1408_64/KL_1408x64px: "0.00 0.00 1408.00 64.00"
+*ImageableArea 2048_64/KL_2048x64px: "0.00 0.00 2048.00 64.00"
+*DefaultPaperDimension: Letter
+*PaperDimension 128_64/KL_128x64px: "128.00 64.00"
+*PaperDimension 256_64/KL_256x64px: "256.00 64.00"
+*PaperDimension 384_64/KL_384x64px: "384.00 64.00"
+*PaperDimension 512_64/KL_512x64px: "512.00 64.00"
+*PaperDimension 768_64/KL_768x64px: "768.00 64.00"
+*PaperDimension 896_64/KL_896x64px: "896.00 64.00"
+*PaperDimension 1024_64/KL_1024x64px: "1024.00 64.00"
+*PaperDimension 1408_64/KL_1408x64px: "1408.00 64.00"
+*PaperDimension 2048_64/KL_2048x64px: "2048.00 64.00"
+*MaxMediaWidth: "64.00"
+*MaxMediaHeight: "2048.00"
+*HWMargins: 0.00 0.00 0.00 0.00
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width: 1 points 64.00 64.00
+*ParamCustomPageSize Height: 2 points 128.00 2048.00
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 0 0
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 10.0 AnySetup *InputSlot
+*DefaultInputSlot: Auto
+*InputSlot Auto: "<</MediaPosition 0>>setpagedevice"
+*CloseUI: *InputSlot
+*OpenUI *Resolution: PickOne
+*OrderDependency: 10.0 AnySetup *Resolution
+*DefaultResolution: 200dpi
+*Resolution 200dpi/200 DPI: "<</HWResolution[200 200]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *dens/Print density: PickOne
+*OrderDependency: 1.0 AnySetup *dens
+*Defaultdens: 2
+*dens 0/1-light: "0"
+*dens 1: "1"
+*dens 2: "2"
+*dens 3: "3"
+*dens 4/5-dark: "4"
+*CloseUI: *dens
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(1.05)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(1.05)" Standard ROM
+*Font AvantGarde-Demi: Standard "(1.05)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(1.05)" Standard ROM
+*Font Bookman-Demi: Standard "(1.05)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(1.05)" Standard ROM
+*Font Bookman-Light: Standard "(1.05)" Standard ROM
+*Font Bookman-LightItalic: Standard "(1.05)" Standard ROM
+*Font Courier: Standard "(1.05)" Standard ROM
+*Font Courier-Bold: Standard "(1.05)" Standard ROM
+*Font Courier-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Courier-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica: Standard "(1.05)" Standard ROM
+*Font Helvetica-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Oblique: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(1.05)" Standard ROM
+*Font Palatino-Bold: Standard "(1.05)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Palatino-Italic: Standard "(1.05)" Standard ROM
+*Font Palatino-Roman: Standard "(1.05)" Standard ROM
+*Font Symbol: Special "(001.005)" Special ROM
+*Font Times-Bold: Standard "(1.05)" Standard ROM
+*Font Times-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Times-Italic: Standard "(1.05)" Standard ROM
+*Font Times-Roman: Standard "(1.05)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
+*Font ZapfDingbats: Special "(001.005)" Special ROM
+*% End of casio_kl.ppd, 06854 bytes.

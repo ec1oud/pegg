@@ -1,0 +1,50 @@
+xbm2crw V0.4
+***************************************************************************
+*   Copyright (C) 2004 by Daniel Amkreutz                                 *
+*   aixpresso@web.de                                                      *
++   compatibility & code enhancements by Alexander Reichl, March 2004     *
+*                                                                         *
+*                                                     Many Thanks !       *
+*                                                                         *
+*   This program is free software; you can redistribute it and/or modify  *
+*   it under the terms of the GNU General Public License as published by  *
+*   the Free Software Foundation; either version 2 of the License, or     *
+*   (at your option) any later version.                                   *
+*                                                                         *
+*   This program is distributed in the hope that it will be useful,       *
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+*   GNU General Public License for more details.                          *
+*                                                                         *
+*   You should have received a copy of the GNU General Public License     *
+*   along with this program; if not, write to the                         *
+*   Free Software Foundation, Inc.,                                       *
+*   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+***************************************************************************
+
+To install xbm2crw just copy the xbm2crw file into a suitable location,
+like /usr/bin or /usr/local/bin.
+
+!! XBM Images must have a color depth of 1Bit !!
+
+The usage of xbm2crw is straight forward. To convert an XBM image just type
+
+	xbm2crw my_image.xbm
+
+This will convert my_image.xbm to a raw file, which can be printed with pegg.
+Due to compatibility reasons the format will be 512x64px. If you want to convert
+an image of different format (for example: width=768, height=128px) then use xbm2crw
+with optional arguments:
+
+        xbm2crw 768 128 my_image.xbm
+	
+The raw file will now have the stated dimensions.
+	
+For your own labels you can use the template.xbm file. Which is of correct size
+and color depth. (But only 521x64px)
+
+Hopefully you have fun with xbm2crw, pegg and kpegg,
+
+Daniel Amkreutz
+
+PS: Please send me comments, bugreports, patches, etc. via eMail at aixpresso@web.de

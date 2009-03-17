@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>cups2pegg - The CUPS Plugin for pegg INSTALLATION</TITLE>
+<link rel="SHORTCUT ICON" href="../images/favicon.ico">
+</HEAD>
+<body style="background-image:url(../images/bg2.png)">
+
+<H1>cups2pegg - The CUPS Plugin for pegg INSTALLATION</H1>
+Modifications Copyright (C) 2004 Daniel Amkreutz aixpresso@web.de (<a href="../pgp.html" target="_new">public key</a>)
+<H2>Before you begin</H2>
+cups2pegg utilizes these programs:
+<UL>
+<LI><a href="http://www.imagemagick.org" target="_new">ImageMagick(TM)</a> convert Command</LI>
+<LI><a href="../xbm2crw/index.html" target="_new">xbm2crw</A></LI>
+<LI><a href="../pegg/index.html" target="_new">pegg</A></LI>
+</UL>
+Please make sure that you have installed these programs and that they are working.<BR>
+Furthermore these tools should be in your $PATH Enviroment (eg. they should be found by <i>which pegg</i> etc.)<BR>
+<B>cups2pegg V0.21a is only useable with pegg_el V0.10 or pegg V0.21 !</b><BR>
+<B>If you use an older Version of pegg you will have to use cups2pegg Version 0.1</b>
+<BR>
+<H2>Procedure</H2>
+The installation procedure has four parts.
+<UL>
+<LI>First you must set some Variables in the cups2pegg script</LI>
+<LI>Then you have to copy the cups2pegg files into the cups directory</LI>
+<LI>Next you can set up the printer in cups</LI>
+<LI>At last you should set some parameters in your printing application</LI>
+</UL>
+<H2>Part 1 - Set up the variables in the cups2pegg script</H2>
+Before you can use cups2pegg you have to modify the values of some variables in the cups2pegg script.<BR>
+For this open the cups2pegg executable with your favourite text editor. You will find the variables at the<BR>
+beginning of the script. Change the values for each variable to match your system configuration.<BR>
+
+<H2>Part 2 - Copy cups2pegg & neccessary ppd's into the cups directory</H2>
+Copy the <i>cups2pegg</i> executable into your CUPS-Backend directory (eg. /usr/lib/cups/backend).<BR>
+If you do not know your CUPS-Backend directory you might try searching for some default Backends (<i>find / -name parallel</i>)<BR><BR>
+Next copy the ppd files to the CUPS PPD Directory (eg. /usr/share/cups/model). <BR><BR>
+Make sure that cups2pegg is executable by the cups deamon. And every ppd is readable by cups.<BR>
+Now restart the cups deamon (<i>/etc/init.d/cupsys restart</i>).
+
+<H2>Part 3 - Printer Setup in CUPS</H2>
+Open your CUPS Configuration page with your favourite Browser (http://localhost:631).<BR>
+There, under "Printers" select "Add Printer".<BR>
+Now you should name the printer, write a description etc. Feel free to write something and click on "continue"<BR><BR>
+<IMG src="./install_1.png"><BR>
+Now select "Pegg Printer" and click on "continue"<BR><BR>
+<IMG src="./install_2.png"><BR>
+For the Device URI enter cups2pegg:/SCRATCH_DIRECTORY. Here I've choosen /tmp as scratchdirectory.<BR>
+The directory will contain some files needed by the backend to convert the print data. These files<BR>
+will be overwritten automatically each time. So there is not a lot of space required. Click on "continue"<BR><BR>
+<IMG src="./install_3.png"><BR>
+Here select "CASIO" as Manufacturer. "continue"<BR><BR>
+<IMG src="./install_4.png"><BR>
+At last you have to select the correct ppd file for your printer<BR>
+<BR>You are done with part 3.
+<H2>Part 4 - Setting margins & pagesize</H2>
+Before you start printing, make sure to set the papersize and margins for the printer correctly.<BR>
+This is mostly done by your printing client application (like kprinter). Set all margins to zero.<BR>
+Make a Preview first. And look if the pagesize is for example about 512x64 px.<BR>
+If the preview is ok then make a real print.<BR><BR>
+Congratulations. That is all.<BR>
+<hr>
+</BODY>
+</HTML>

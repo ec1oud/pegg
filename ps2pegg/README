@@ -1,0 +1,37 @@
+Readme for ps2pegg-0.10
+-----------------------
+
+	ps2pegg V0.10 - Linux support for Casio label printers.
+
+	Copyright (c) 2004 Alex Perry, <alex@pamurray.com>
+
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+	This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+	You may use this program for whatever you want as long the above written
+	text remains.
+
+	Please support Pegg by testing it and reporting bugs. !
+
+
+------
+
+
+The ps2pegg.awk script converts a plain PBM input bitmap into the
+binary format that's expected by the PEGG program. The input bitmap can
+be too big, since whitespace is cropped on all four sides of the image.
+
+If that AWK converter is combined with the netpbm and ghostscript packages
+it is possible to generate postscript print jobs to make labels out of every application.
+The bash script shows how to convert a simple text string into
+postscript (as an example) and then generates a label with the text.
+With small changes, this can easily be added to an LPR configuration.
+
+
