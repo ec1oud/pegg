@@ -41,7 +41,7 @@
 	Please support Pegg by testing it and reporting bugs. !
 */
 
-#include <strings.h>
+#include <string.h>
 #include <stdio.h>
 #include <usb.h>
 #include <ctype.h>
@@ -52,13 +52,13 @@ int _interfacenumber, 	/* Interface and Endpoints of the printer*/
     density = 3,	/* Set the default density */
     label_length = 2,   /* Set the default length to 512px*/
     width=512;
-    
+
 /* If this is not null; we're just going to omit a PNM file */
 char *pnm_filename = NULL;
-    
+
 char _read_buffer[8],	/* Read and Write buffer */
      _write_buffer[64];
-     
+
 
 char ESC = 0x1b,	/* The Printer's contol codes*/
      STX = 0x02,
@@ -84,99 +84,13 @@ struct usb_bus *bus;
 struct usb_device *dev;
 usb_dev_handle *_eggprinter;
 
-
-int main (int argc, char *argv[]) {	/* The Main Program handles commandline args and processes the image-file */
-
-  int test=0,
-      c=0,
-      i=0;
-  FILE * raw_file;
-  
-  printf("%s - %s, %s\n",
-      "Pegg Version 0.23",
-      "(c) 2003,04 Daniel Amkreutz",
-      "(c) 2004 Alex Perry\n" );
-
-  if (argc < 2) {
-    printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
-      "WRONG NUMBER OF ARGUMENTS.\n",
-      "Usage:\n\tpegg -w (-d) (-t) (-o) PEGG-FILE\n",
-      "Options:",
-      "\t-d<dens>\tset print density 0=light...4=dark (eg. -d3)",
-      "\t-t\t\tprint Information about device",
-      "\t-o<file>\tExport to <file> (PNM) instead of printing",
-      "\t-w<width>\twidth in px (eg. -w512) only KL-P1000");
-    exit(0);
+int chr2int (char s[]) {
+  int i,n;
+  n=0;
+  for (i=0;isdigit(s[i]); ++i) {
+      n = 10 * n + (s[i]-'0');
   }
-
-				    /* Handle command line argunemts*/
-  for (i=0; i < argc; i++) {
-    
-    if (strstr(argv[i],"-w") != 0x00) {
-      if(strtok(argv[i], "-w") != NULL) width = chr2int(strtok(argv[i], "-w"));
-      }
-    if (strstr(argv[i],"-d") != 0x00) {
-      if(strtok(argv[i], "-d") != NULL) density = chr2int(strtok(argv[i], "-d"));
-      }
-    if (strstr(argv[i],"-o") != 0x00) {
-      if(strtok(argv[i], "-o") != NULL) pnm_filename = 2+strstr(argv[i], "-o");
-      }
-    if (strstr(argv[i],"-t") != 0x00) test = 1;         
-  } 
- 				    
-				    /* Deal with the test special case */
-  if (test != 0) {
-   display_printer_status();
-   exit(0);
-  }
-
-				    /* We know how big the raw file will be */
-  char data[(width*8-1)+1024];    
-  bzero(data,width*8+1024);    
-				     /* Not testing, so find our input file */
-
-  raw_file = fopen(argv[i-1],"rb");  /* raw-file is the LAST arg so it can be read here */
-
-  if (raw_file==NULL){
-    printf("Error opening file: %s !\n", argv[i-1]);
-    exit(-1);
-  }		
-	        		    /* Read it and close it */
-  for (i=0; i < (width*8); i++) {
-    c = getc(raw_file);
-    data[i] = c;
-    if (c<0) width = (i/8);
-  }
-
-  fclose (raw_file);
-  printf ("%i Bytes read for width %i.\n",i,width);
-
-				      /* Normally we simply call the printout routine */
-  if (pnm_filename == NULL) {
-      send_raw_data(data);
-      exit(0);
-     }
-				      /* Now open the dump file */
-  printf ( "*%s*\n", pnm_filename );
-  raw_file = fopen ( pnm_filename, "wb" );
-  if ( raw_file == NULL ) {
-      perror ( "Failed to open pnm output file" );
-      exit(-2);
-  }
-
-				      /* This generates PNMPLAIN format output */
-  fprintf ( raw_file, "P1 %i 64\n", width );
-  for ( i=0; i<64; i++ )
-    for ( c=0; c<width; c++ )
-      fprintf ( raw_file, "%i%c",
-      0 != ( ( (unsigned int) data[(c*8)+(i/8)] )
-             & ( ((unsigned int)1)<<(i%8) )
-             ),
-      ( (c==width-1) ) ? '\n' : ' ' );
-  fclose ( raw_file );
-  
-				      /* All is well if we got this far */    
-  exit(0);
+  return n;
 }
 
 
@@ -319,7 +233,7 @@ int display_printer_status() {
     return -1;
   }
 
-  
+
   _write_buffer[0] = ESC;		/* The Readbuffer is cleared automatically before reading */
   _write_buffer[1] = _I;
 
@@ -373,11 +287,11 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
       n=0,
       z=0,
       datapos=0;
-      
-  
+
+
   char KLP_KPC = 0x00;
-       
-  
+
+
   ret = open_printer();
 
   if(ret < 0) {
@@ -411,7 +325,7 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
   }
 
   if(KLP_KPC == 0x26) {			/* Send ESC_F to complete communication for KL-P1000*/
-    
+
     printf("Checking for paper type... ");
     _write_buffer[0] = ESC;
     _write_buffer[1] = _F;
@@ -458,28 +372,28 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
   _write_buffer[0] = STX;		/* Necessary epiloge created before printing */
   _write_buffer[1] = 0x80;
   _write_buffer[2] = 0x0c;
-  
+
   _write_buffer[7] = density;
   _write_buffer[8] = 0x40;		/*Height 64Dots */
   _write_buffer[9] = 0x00;
 
 
   if(KLP_KPC == 0x26) {			/* IF KL-P1000 */
-    
-        
-   _write_buffer[10] = (width % 256);		
-   _write_buffer[11] = (width / 256);		
+
+
+   _write_buffer[10] = (width % 256);
+   _write_buffer[11] = (width / 256);
    _write_buffer[12] = (size % 256);	/* Transfer data size */
    _write_buffer[13] = (size / 256);
-  
+
   } else {				/* FIXED FOR KP Series  */
-    
+
    _write_buffer[10] = 0x02;		/* 0x0200 = 512 dots width */
    _write_buffer[11] = 0x00;		/* Transfer data size 4096 Bytes*/
    _write_buffer[12] = 0x10;
    _write_buffer[13] = 0x00;
   }
-  
+
   printf("Sending print format... ");
 
   write_to_printer(16);
@@ -508,20 +422,20 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
   }
 
   printf("DATA TRANSFER ");
-  
+
   if ((size % 1024) == 0) {
    volume = size / 1024;
   } else {
    volume = size / 1024 + 1;
   }
-  
+
   for (i=0; i <= volume; i++) {  /* Number of pages */
-  
+
    _write_buffer[0] = STX;
    _write_buffer[1] = 0x00;
    _write_buffer[2] = 0x00;
-   _write_buffer[3] = 0x04;  
-   
+   _write_buffer[3] = 0x04;
+
    if(i == volume) { /* Last packet */
      _write_buffer[1] = 0x80;
      if(volume % 1024 != 0) {
@@ -529,40 +443,40 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
        _write_buffer[3] = (volume % 1024) / 256;
      }
    }
-  
+
    for (n=0; n < 16; n++) {	       /* Each page has 17 Blocks with 64kByte */
-    
+
     if(n == 0) {
-     
+
      for(z = 0; z < 60; z++) {
       _write_buffer[z+4] = printdata[datapos + z];
-    
+
      }
      datapos = datapos + z;
      write_to_printer(64);
-       
-    } else { 
-     
+
+    } else {
+
      for(z = 0; z < 64; z++) {
       _write_buffer[z] = printdata[datapos+z];
-    
+
      }
      datapos = datapos + z;
-     write_to_printer(64);     
-   
+     write_to_printer(64);
+
     }
    }
-   
+
    for(z = 0; z < 4; z++) {
      _write_buffer[z] = printdata[datapos + z];
-    
+
    }
-   
+
    datapos = datapos + z;
-   
+
    write_to_printer(64);
    recv_from_printer(1);
-   
+
    if(_read_buffer[0] == ACK) {
     printf("...%dkB",i);
     fflush( stdout );
@@ -570,10 +484,10 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
     printf("ERROR\n");
     return -1;
    }
-   
-     
- } 
-   
+
+
+ }
+
   _write_buffer[0] = ESC;
   _write_buffer[1] = _N;
   write_to_printer(2);
@@ -654,11 +568,97 @@ int send_raw_data(char printdata[]) {	/* The printing routine */
   return 0;
 }
 
-int chr2int (char s[]) {
-  int i,n;
-  n=0;
-  for (i=0;isdigit(s[i]); ++i) {      
-      n = 10 * n + (s[i]-'0');
+int main (int argc, char *argv[]) {	/* The Main Program handles commandline args and processes the image-file */
+
+  int test=0,
+      c=0,
+      i=0;
+  FILE * raw_file;
+
+  printf("%s - %s, %s\n",
+      "Pegg Version 0.23",
+      "(c) 2003,04 Daniel Amkreutz",
+      "(c) 2004 Alex Perry\n" );
+
+  if (argc < 2) {
+    printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
+      "WRONG NUMBER OF ARGUMENTS.\n",
+      "Usage:\n\tpegg -w (-d) (-t) (-o) PEGG-FILE\n",
+      "Options:",
+      "\t-d<dens>\tset print density 0=light...4=dark (eg. -d3)",
+      "\t-t\t\tprint Information about device",
+      "\t-o<file>\tExport to <file> (PNM) instead of printing",
+      "\t-w<width>\twidth in px (eg. -w512) only KL-P1000");
+    exit(0);
   }
-  return n;
+
+				    /* Handle command line argunemts*/
+  for (i=0; i < argc; i++) {
+
+    if (strstr(argv[i],"-w") != 0x00) {
+      if(strtok(argv[i], "-w") != NULL) width = chr2int(strtok(argv[i], "-w"));
+      }
+    if (strstr(argv[i],"-d") != 0x00) {
+      if(strtok(argv[i], "-d") != NULL) density = chr2int(strtok(argv[i], "-d"));
+      }
+    if (strstr(argv[i],"-o") != 0x00) {
+      if(strtok(argv[i], "-o") != NULL) pnm_filename = 2+strstr(argv[i], "-o");
+      }
+    if (strstr(argv[i],"-t") != 0x00) test = 1;
+  }
+
+				    /* Deal with the test special case */
+  if (test != 0) {
+   display_printer_status();
+   exit(0);
+  }
+
+				    /* We know how big the raw file will be */
+  char data[(width*8-1)+1024];
+  bzero(data,width*8+1024);
+				     /* Not testing, so find our input file */
+
+  raw_file = fopen(argv[i-1],"rb");  /* raw-file is the LAST arg so it can be read here */
+
+  if (raw_file==NULL){
+    printf("Error opening file: %s !\n", argv[i-1]);
+    exit(-1);
+  }
+	        		    /* Read it and close it */
+  for (i=0; i < (width*8); i++) {
+    c = getc(raw_file);
+    data[i] = c;
+    if (c<0) width = (i/8);
+  }
+
+  fclose (raw_file);
+  printf ("%i Bytes read for width %i.\n",i,width);
+
+				      /* Normally we simply call the printout routine */
+  if (pnm_filename == NULL) {
+      send_raw_data(data);
+      exit(0);
+     }
+				      /* Now open the dump file */
+  printf ( "*%s*\n", pnm_filename );
+  raw_file = fopen ( pnm_filename, "wb" );
+  if ( raw_file == NULL ) {
+      perror ( "Failed to open pnm output file" );
+      exit(-2);
+  }
+
+				      /* This generates PNMPLAIN format output */
+  fprintf ( raw_file, "P1 %i 64\n", width );
+  for ( i=0; i<64; i++ )
+    for ( c=0; c<width; c++ )
+      fprintf ( raw_file, "%i%c",
+      0 != ( ( (unsigned int) data[(c*8)+(i/8)] )
+             & ( ((unsigned int)1)<<(i%8) )
+             ),
+      ( (c==width-1) ) ? '\n' : ' ' );
+  fclose ( raw_file );
+
+				      /* All is well if we got this far */
+  exit(0);
 }
+
