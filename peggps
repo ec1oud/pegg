@@ -35,13 +35,15 @@ $length = 512;
 $height = 64;
 
 open(inf, $infile);
+$foundBounds = 0;
 $line = <inf>;
-while ($line && !$length)
+while ($line && !$foundBounds)
 {
 	if ($line =~ /%%BoundingBox:\s+\d+\s+\d+\s+(\d+)\s+(\d+).*/)
 	{
 		$length = $1;
 		$height = $2;
+		$foundBounds = 1;
 	}
 	$line = <inf>;
 }
