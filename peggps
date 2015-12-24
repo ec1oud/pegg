@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 #
 # Print the given postscript file to the connected Casio label printer.
-# One point will be treated as one pixel (as if the postscript was displayed 
+# One point will be treated as one pixel (as if the postscript was displayed
 # at 100% screen resolution on a 72DPI screen).
-# Therefore the %%BoundingBox comment will determine the initial size of 
+# Therefore the %%BoundingBox comment will determine the initial size of
 # the output file in pixels.  Then it will be auto-cropped down to the minimum
-# width (via ImageMagick), converted to XBM, sent to xbm2crw, then the 
+# width (via ImageMagick), converted to XBM, sent to xbm2crw, then the
 # output of that is sent to the printer.  Hopefully the result is no more
 # label waste than is strictly necessary (although the printer leaves
 # a tail on every label anyway, due to the distance between the print head
@@ -58,7 +58,7 @@ $rawname = $xbmname . ".crw";
 print "got tmp file $pbmname\n";
 
 &runOrDie("/usr/bin/pstopnm -pbm -xsize $length -ysize $height -xborder 0 -yborder 0 -stdout $infile > $pbmname");
-&runOrDie("/usr/bin/convert -rotate 90 $pbmname -background white -splice 0x1  -background black -splice 0x1 -trim  +repage -chop 0x1 $xbmname");
+&runOrDie("/usr/bin/convert $pbmname -background white -splice 0x1  -background black -splice 0x1 -trim  +repage -chop 0x1 $xbmname");
 &runOrDie("/usr/local/bin/xbm2crw $length $height $xbmname");
 &runOrDie("/usr/local/bin/pegg $rawname");
 
