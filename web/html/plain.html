@@ -1,0 +1,18 @@
+<title>Plain Label Printer</title>
+<form action="/cgi-bin/print-plain-label" method="GET">
+<table>
+<tr><td align=right>Label:</td><td><input type="text" name="label"></td></tr>
+<tr><td align=right>Font:</td><td>
+ <select name="font">
+  <option value="WindsorDemi">Windsor Demi</option>
+  <option value="Helvetica">Helvetica</option>
+  <option value="Helvetica-Narrow">Helvetica Narrow</option>
+  <option value="TimesNewRoman">Times New Roman</option>
+  <option value="Palatino">Palatino</option>
+</select>
+<input type="checkbox" name="bold"/>Bold
+<input type="checkbox" name="italic"/>Italic
+</td></tr>
+<tr><td></td><td><input type="submit" name="action" value="Print">&nbsp;<input type="submit" name="action" value="Preview"></td></tr>
+</table>
+</form>
