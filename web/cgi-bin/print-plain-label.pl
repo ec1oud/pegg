@@ -1,7 +1,8 @@
 #!/usr/bin/perl -w
 use CGI qw(:standard);
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
-use POSIX qw(tmpnam);
+use File::Temp qw/ :POSIX /;
+use File::Basename;
 print header;
 print start_html("Label printing results");
 
@@ -16,7 +17,9 @@ sub runOrDie
 	}
 }
 
-$tmpname = tmpnam();
+$tm = tmpnam();
+$tmpname = "/tmp/http/" . basename($tm);
+$tmpurl = "/tmp/" . basename($tm);
 $psname = $tmpname . "_plain_label.ps";
 
 # Get strings
@@ -67,12 +70,10 @@ close(outf);
 
 if ($preview) {
 	print "<body bgcolor=\"#555\">";
-	$pbmname = $tmpname . "_plain_label.pbm";
-	&runOrDie("/usr/bin/pstopnm -pbm -xsize 512 -ysize 64 -xborder 0 -yborder 0 -stdout $psname > $pbmname");
 	$pngname = $tmpname . "_plain_label.png";
-	&runOrDie("/usr/bin/convert $pbmname -rotate 90 -background white -splice 0x1  -background black -splice 0x1 -trim  +repage -chop 0x1 $pngname");
-	unlink($pbmname);
-	print "<img src=\"$pngname\"/>";
+	$pngurl = $tmpurl . "_plain_label.png";
+	&runOrDie("/usr/bin/magick $psname -background white -splice 0x1 -background black -splice 0x1 -trim +repage -chop 0x1 $pngname");
+	print "<img src=\"$pngurl\"/>";
 	print "</body>";
 } else {
 	foreach my $p (param()) {

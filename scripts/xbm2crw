@@ -24,14 +24,15 @@
 my ($sXBM, $pos, $file);
 my @bitmap = ((0) x (512 * 8));
 
-print "\nxbm2crw Version 0.5 (C) 2004 Daniel Amkreutz\n";
-print "modified by Alexander Reichl, March 2004\n";
-print "modified by Shawn Rutledge, April 2011\n";
+print "xbm2crw Version 0.6\n";
 
 if (@ARGV == 0) {
-  print "convert an black&white xbm file to a casio raw file\n\n";
-  print "\tXBM format:\t1-Bit black&white\n";
-  print "\nERROR! Wrong number of Parameters.\n\n\tUsage: xbm2crw.pl XBMFILE\n\n";
+  print "(C) 2004 Daniel Amkreutz\n";
+  print "modified by Alexander Reichl, March 2004\n";
+  print "modified by Shawn Rutledge, April 2011\n";
+  print "convert a black&white xbm file to a raw file for Casio label printers\n";
+  print "\tXBM format:    1-Bit; width: usually 64; height: length of label\n";
+  print "\nERROR! Wrong number of Parameters.\n\n\tUsage: xbm2crw XBMFILE\n\t   or: xbm2crw length height XBMFILE\n\n";
   exit;
 }
 
@@ -70,7 +71,7 @@ if (@ARGV != 1) {
   }
 }
 
-print "converting to ".($set_row+1)." x ".(($set_col+1)*8)."...\n";
+print "converting to ".($set_row+1)." x ".(($set_col+1)*8).": ".$file.".crw\n";
 
 $sXBM =~ s/\n//g;
 $sXBM =~ s/\s//g;

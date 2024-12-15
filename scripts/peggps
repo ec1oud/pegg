@@ -15,7 +15,7 @@
 # Released under the GPL license
 #
 
-use POSIX qw(tmpnam);
+use File::Temp qw/ :POSIX /;
 
 sub runOrDie
 {
@@ -52,16 +52,13 @@ close(inf);
 print "initial bounding box: $length x $height points\n";
 
 $tmpname = tmpnam();
-$pbmname = $tmpname . "_pegg_tmp.pbm";
 $xbmname = $tmpname . "_pegg_tmp.xbm";
 $rawname = $xbmname . ".crw";
-print "got tmp file $pbmname\n";
+print "got tmp file $xbmname\n";
 
-&runOrDie("/usr/bin/pstopnm -pbm -xsize $length -ysize $height -xborder 0 -yborder 0 -stdout $infile > $pbmname");
-&runOrDie("/usr/bin/convert $pbmname -background white -splice 0x1  -background black -splice 0x1 -trim  +repage -chop 0x1 $xbmname");
+&runOrDie("/usr/bin/magick $infile -rotate 90 $xbmname");
 &runOrDie("/usr/local/bin/xbm2crw $length $height $xbmname");
 &runOrDie("/usr/local/bin/pegg $rawname");
 
-unlink($pbmname);
 unlink($xbmname);
 unlink($rawname);
