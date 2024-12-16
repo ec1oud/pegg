@@ -7,10 +7,10 @@
 # -------------
 
 # Installation path (the path where the executable will be installed):
-PREFIX=/usr/bin
+PREFIX=/usr/local/bin
 
 # The path for the manpage (normally /usr/share/man)
-MAN_PATH=/usr/share/man
+MAN_PATH=/usr/local/share/man
 
 # Compiler flags (default: display all warnings)
 CFLAGS=-Wall
