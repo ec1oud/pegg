@@ -34,7 +34,7 @@ all:	pegg
 
 install:
 	cp pegg ${PREFIX}/.
-	cp pegg.1.gz ${MAN_PATH}/man1/.
+	gzip -c pegg.1 > ${MAN_PATH}/man1/pegg.1.gz
 
 clean:
 	rm pegg

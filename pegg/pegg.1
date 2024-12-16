@@ -1,4 +1,4 @@
-.TH pegg 1 "Dec 11, 2004" "version 0.23" "USER COMMANDS"
+.TH pegg 1 "December 2024" "version 0.23" "USER COMMANDS"
 .SH NAME
 pegg \- Linux support for Casio label printers
 .SH SYNOPSIS
@@ -8,23 +8,23 @@ pegg \- Linux support for Casio label printers
 .PP
 IMPORTANT NOTICE:
 .PP
-* This software was designed using data made available by and is released
-  with the permission of CASIO COMPUTER CO., LTD.
+* This software was designed using data made available by and is released with the permission of CASIO COMPUTER CO., LTD.
 .PP
-* CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
-  this software.
+* CASIO COMPUTER Co., LTD. assumes no responsibility for the content of this software.
 .PP  
-* Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
-  concerning this software.
+* Please do not contact CASIO COMPUTER CO., LTD. with any inquiries concerning this software.
 .PP
 pegg is a control program for the Casio KP-C10/50 or KLP1000 label printers.
 It allows you to print a raw imagefile with your printer. Furthermore it includes
 a small testing feature which can be used to check the communication with your printer.
 .PP
-pegg makes use of the /proc/bus/usb filesystem. If you want to make sure that everybody can
-use the printer, you should check the permission of the corresponding devicefile. For this
-have a look at syslog messages when you plugin your printer
-An example: /proc/bus/usb/001/003 (controler 001, device 003)
+pegg makes use of the /dev/bus/usb filesystem. If you want to make sure that
+everybody can use the printer, you should ensure that the corresponding
+devicefile belongs to a group containing all the users who need it.
+.PP
+To find the printer device after plugging it in, try dmesg (kernel logging) or ls\~-ltr\~/dev/char
+(the last device listed is the most recently plugged in).
+An example: /dev/bus/usb/001/003 (controler 001, device 003)
 .SH OPTIONS
 .TP
 \-t
@@ -42,7 +42,7 @@ is smaller, the width will be adjusted.
 Export to <file> file instead of printing
 .TP
 PEGG-FILE
-selects the file wich should be printed.
+selects the file to be printed.
 .SH EXAMPLES
 .TP
 Check your printer
@@ -55,7 +55,12 @@ Print my_label with density 4
 .TP 
 Export my_label (format: 768x64px (w x h)) to preview.pnm
 .B pegg -w768 -opreview.pnm my_label
+.TP
+udev rule to fix permissions
+.B SUBSYSTEM=="usb", ATTR{idVendor}=="07cf", MODE="0666", GROUP="thegroup", OWNER="theuser"
+.PP
 .SH AUTHORS
-Initial Version by Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>, pnm-Export & severall modifications by Alex Perry <alex@pamurray.com>
+Initial version by Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>, pnm-Export & several modifications by Alex Perry <alex@pamurray.com>, ongoing maintenance by Shawn Rutledge <s@ecloud.org>
 .SH REPORTING BUGS
-Report bugs to Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>
+Report bugs to Shawn Rutledge <s@ecloud.org>
+
