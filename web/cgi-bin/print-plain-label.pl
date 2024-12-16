@@ -57,6 +57,7 @@ foreach my $key (param())
 	}
 }
 
+mkdir("/tmp/http");
 open(outf, ">$psname");
 print outf "%!PS-Adobe-2.0\n";
 print outf "%%BoundingBox: 0 0 512 64\n";
