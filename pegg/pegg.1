@@ -1,0 +1,61 @@
+.TH pegg 1 "Dec 11, 2004" "version 0.23" "USER COMMANDS"
+.SH NAME
+pegg \- Linux support for Casio label printers
+.SH SYNOPSIS
+.B pegg -w (\-t) (\-d) (\-o)  PEGG-FILE
+
+.SH DESCRIPTION
+.PP
+IMPORTANT NOTICE:
+.PP
+* This software was designed using data made available by and is released
+  with the permission of CASIO COMPUTER CO., LTD.
+.PP
+* CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
+  this software.
+.PP  
+* Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
+  concerning this software.
+.PP
+pegg is a control program for the Casio KP-C10/50 or KLP1000 label printers.
+It allows you to print a raw imagefile with your printer. Furthermore it includes
+a small testing feature which can be used to check the communication with your printer.
+.PP
+pegg makes use of the /proc/bus/usb filesystem. If you want to make sure that everybody can
+use the printer, you should check the permission of the corresponding devicefile. For this
+have a look at syslog messages when you plugin your printer
+An example: /proc/bus/usb/001/003 (controler 001, device 003)
+.SH OPTIONS
+.TP
+\-t
+Test the communication with the printer and gives information about the type
+.TP
+\-d<dens>
+Set the printing density 0=light...4=dark. Default density is 3 (-d3)
+.TP
+\-w<width>
+Set the maximum printing width to <width> (eg. -w384 = 384px width) Default is 512 This switch is 
+only usable with a KL-P1000 printer. KP-C10/50 are restricted to the default setting. If the inputfile
+is smaller, the width will be adjusted.
+.TP
+\-o<file>
+Export to <file> file instead of printing
+.TP
+PEGG-FILE
+selects the file wich should be printed.
+.SH EXAMPLES
+.TP
+Check your printer
+.B pegg \-t
+.PP
+.TP
+Print my_label with density 4
+.B pegg -d4 my_label
+.PP
+.TP 
+Export my_label (format: 768x64px (w x h)) to preview.pnm
+.B pegg -w768 -opreview.pnm my_label
+.SH AUTHORS
+Initial Version by Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>, pnm-Export & severall modifications by Alex Perry <alex@pamurray.com>
+.SH REPORTING BUGS
+Report bugs to Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>
